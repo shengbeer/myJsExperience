@@ -1,0 +1,19 @@
+使用已有的DOM方法来实现getElementsByClassName的功能
+这个函数能使用于新老浏览器：
+function getElmentsByClassName(node,calssname){
+   if(node.getElementsByClassName){
+    //使用现有方法
+   //node表示DOM树种的搜素起点，第二个classname就是要搜索的类名了。
+   return node.getElementsByClassName(classname);
+}  else{
+   var results =new Array();
+   var elems=node.getElementsByTagName("*");
+   for(var i=0;i<elems.length;i++){
+    if(elems[i].calssName.indexof(classname)!=-1){
+        results[results.length]=elems[i];
+}
+}
+return results;
+}
+}
+这个函数的功能是：如果传入节点上已经存在了适当的getElemnetsByClassName函数，那么这个新函数就直接返回相应的节点列表。如果getElementsByClassName函数不存在，这个新函数就会循环遍历所有标签，查找带有相应类名的元素（不适合与多个类名）
